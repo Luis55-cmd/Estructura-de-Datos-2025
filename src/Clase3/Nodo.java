@@ -8,6 +8,14 @@ package Clase3;
  *
  * @author Luis
  */
-public class Listas {
+public class Nodo {
+    public int dato;
+    public Nodo next; //puntero
     
+    //constructor
+
+    public Nodo(int dato, Nodo next) {
+        this.dato = dato;
+        this.next = next;
+    }
 }
