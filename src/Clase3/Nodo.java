@@ -8,14 +8,18 @@ package Clase3;
  *
  * @author Luis
  */
-public class Nodo {
-    public int dato;
-    public Nodo next; //puntero
+public class Nodo <T>{
+    public T dato; //Lo que contiene el nodo
+    public Nodo <T> pNext; //Puntero al siguiente nodo
     
-    //constructor
-
-    public Nodo(int dato, Nodo next) {
+    //Constructor para insertar al inicio
+    public Nodo(T dato, Nodo pNext) {
         this.dato = dato;
-        this.next = next;
+        this.pNext = pNext;
+    }
+    //Constructor para insertar al final
+    public Nodo(T dato){
+        this.dato = dato;
+        this.pNext = null;
     }
 }

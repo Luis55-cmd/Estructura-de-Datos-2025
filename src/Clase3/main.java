@@ -16,21 +16,27 @@ public class main{
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Lista lista_nueva=new Lista();
-        int opcion=0,input_usuario;
+        Lista listaNueva=new Lista();
+        int opcion=0,inputUsuario;
         do{
             try{
                 opcion=Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "1. Agregar un elemento al inicio de la lista\n2. Mostrar los datos de la lista\n"
-                            +"3. Salir","Menu de Opciones",3));
+                        "1. Insertar un elemento al inicio de la lista"
+                        + "\n2. Insertar un elemento al final de la lista"
+                        + "\n3. Mostrar los datos de la lista"
+                        + "\n4. Vaciar la lista"
+                        + "\n5. Buscar un elemento de la lista"
+                        + "\n6. Eliminar un elemento al inicio de la lista"
+                        + "\n7. Eliminar un elemento al final de la lista"
+                        + "\n8. Salir","Menu de Opciones",3));
                 switch(opcion){
                     case 1:
                         try{
-                            input_usuario=Integer.parseInt(JOptionPane.showInputDialog(null,
+                            inputUsuario=Integer.parseInt(JOptionPane.showInputDialog(null,
                                     "Ingresa el elemento:","Insertando al inicio",3));
           
                             //agregando al nodo
-                            lista_nueva.agregar_al_inicio(input_usuario);
+                            listaNueva.AgregarAlInicio(inputUsuario);
                         
                         }catch(NumberFormatException n){
                             JOptionPane.showMessageDialog(null, "Error"+n.getMessage());
@@ -41,11 +47,58 @@ public class main{
                         
                         break;
                     case 2:
-                        lista_nueva.mostrar_lista();
+                        try{
+                            inputUsuario=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                    "Ingresa el elemento:","Insertando al final",3));
+          
+                            //agregando al nodo
+                            listaNueva.AgregarAlFinal(inputUsuario);
+                        
+                        }catch(NumberFormatException a){
+                            JOptionPane.showMessageDialog(null, "Error"+a.getMessage());
+                                    
+                        }
+
+                        break;
+                    
+                    case 3:
+                        
+                        listaNueva.MostrarLista();
+                        System.out.println();
+                        break;
+                    case 4:
+                        listaNueva.Vaciar();
+                        System.out.println("La lista se ha vaciado correctamente");
+                        listaNueva.MostrarLista();
+                        break;
+                    case 5:
+                        try{
+                            inputUsuario=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                    "Ingresa el elemento:","Buscando",3));
+          
+                            if (listaNueva.Buscar(inputUsuario)) {
+                                System.out.println("El valor " + inputUsuario + " si se encuentra en la lista.");
+                            } else {
+                                System.out.println("El valor " + inputUsuario + " no se encontró en la lista.");
+                            }
+                            
+                        
+                        }catch(NumberFormatException a){
+                            JOptionPane.showMessageDialog(null, "Error"+a.getMessage());
+                                    
+                        }
+                        break;
+                        
+                    case 6:
+                        listaNueva.EliminarAlInicio();
                         
                         break;
                         
-                    case 3:
+                    case 7:
+                        listaNueva.EliminarAlFinal();
+                        break;
+                    case 8:
+                        
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Opcion incorrecta");
@@ -54,7 +107,7 @@ public class main{
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error"+e.getMessage());
             }
-        }while(opcion!=3);
+        }while(opcion!=8);
         
     }
 }

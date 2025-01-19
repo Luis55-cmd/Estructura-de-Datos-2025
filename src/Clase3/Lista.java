@@ -8,29 +8,155 @@ package Clase3;
  *
  * @author Luis
  */
-public class Lista {
-    Nodo inicio,fin; //Punteros inicio y final
+public class Lista <T>{
+    //Atributos
+    public Nodo pFirst,pLast; //Punteros inicio y final
+    public int size; //Tamaño de la lista
+    
+    //Constructor lista
     public Lista(){
-        inicio=null;
-        fin=null;
+        this.pFirst=null;
+        this.pLast=null;
+        this.size=0;
     }
-    //Funcion agregar un nodo al inicio
-    public void agregar_al_inicio(int elemento){
-        //creando al nodo
-        inicio=new Nodo(elemento, inicio);
-        if(fin==null){
-            fin=inicio;
+    
+    //Funcion para saber si la lista esta vacia
+    public boolean IsEmpty(){
+        return pFirst==null;
         
+    }
+    
+    //Funcion vaciar lista
+    public void Vaciar(){
+        this.pFirst=null;
+        this.size=0;
+    }
+    
+    //Funcion agregar al final
+    public void AgregarAlFinal(T dato){
+        Nodo nuevo=new Nodo(dato);
+        if(!IsEmpty()){
+            this.pLast.pNext=nuevo;
+            this.pLast=nuevo;
+        }else{
+            this.pFirst=this.pLast=nuevo;
+            
         }
+        this.size++;
+        
+    }
+    
+    //Funcion agregar un nodo al inicio
+    public void AgregarAlInicio(T dato){
+        Nodo nuevo=new Nodo(dato);
+        if(!IsEmpty()){
+            nuevo.pNext=this.pFirst;
+        this.pFirst=nuevo;
+        }else{
+        this.pFirst=this.pLast=nuevo;
+        }
+        this.size++;
     }
 
-    //Funcion mostrar lista
-    public void mostrar_lista(){
-        Nodo recorrer= inicio;
-        System.out.println();
-        while(recorrer!=null){
-            System.out.print("["+recorrer.dato+"]---->");
-            recorrer=recorrer.next;
+    
+    //Funcion eliminar un nodo al inicio
+    public void EliminarAlInicio(){
+        if (!IsEmpty()){
+            System.out.println("Se ha eliminado el "+pFirst.dato );
+            if (this.pFirst==this.pLast){
+                Vaciar();
+            }else{
+                Nodo aux=this.pFirst.pNext;
+                
+                this.pFirst.pNext=null;
+                
+                this.pFirst=aux;
+                this.size--;
             }
         }
+        
+    }
+    
+    //Funcion eliminar un nodo al final
+    public void EliminarAlFinal(){
+        if (!IsEmpty()){
+            System.out.println("Se ha eliminado el "+pLast.dato );
+            if (this.pFirst==this.pLast){
+                Vaciar();
+            }else{
+                Nodo aux=this.pFirst;
+                while(aux.pNext!=this.pLast){
+                aux=aux.pNext;
+                }
+                
+                aux.pNext=null;
+                this.pLast=aux;
+                this.size--;
+            }
+        }
+        
+    }
+    
+    //Funcion buscar un elemento de un nodo
+    public boolean Buscar(T elemento) {
+        Nodo temp = pFirst; // Comienza desde el primer nodo
+        while (temp != null) {
+            if (temp.dato == elemento) {
+                return true; // Si encuentra el valor, devuelve true
+            }
+            temp = temp.pNext; // Si no, avanza al siguiente nodo
+        }
+        return false; // Si llega al final y no lo encuentra, devuelve false
+        
+        
+    }
+        
+    
+
+    //Funcion mostrar lista
+    public void MostrarLista(){
+        Nodo recorrer= pFirst;
+        System.out.print("Tamaño de la lista: "+this.size);
+        System.out.println();
+        if(!IsEmpty()){
+        while(recorrer!=null){
+            
+            System.out.print("["+recorrer.dato+"]---->");
+
+            
+            recorrer=recorrer.pNext;
+            
+            }
+        System.out.println("null");
+        
+        
+        }else{
+            System.out.println("[]");
+        }
+        
+        
+        }
+    //Funcion intercala el numero 666 entre cada nodo
+    public void Intercalar666(){
+        Nodo recorrer= pFirst;
+        System.out.println();
+        if(!IsEmpty()){
+        while(recorrer!=null){
+            
+            System.out.print("["+recorrer.dato+"]---->");
+            System.out.print("["+666+"]---->");
+            
+            recorrer=recorrer.pNext;
+            
+            }
+        System.out.println("null");
+        
+        
+        }else{
+            System.out.println("[]");
+        }
+        
+    }
+    
+    
 }
