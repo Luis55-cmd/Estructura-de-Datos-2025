@@ -28,7 +28,8 @@ public class main{
                         + "\n5. Buscar un elemento de la lista"
                         + "\n6. Eliminar un elemento al inicio de la lista"
                         + "\n7. Eliminar un elemento al final de la lista"
-                        + "\n8. Salir","Menu de Opciones",3));
+                        + "\n8. Eliminar un elemento especifico de la lista"
+                        + "\n9. Salir","Menu de Opciones",3));
                 switch(opcion){
                     case 1:
                         try{
@@ -98,8 +99,23 @@ public class main{
                         listaNueva.EliminarAlFinal();
                         break;
                     case 8:
+                        try{
+                            inputUsuario=Integer.parseInt(JOptionPane.showInputDialog(null,
+                                    "Ingresa el elemento:","Buscando",JOptionPane.INFORMATION_MESSAGE));
+          
+                            listaNueva.EliminarEspecifico(inputUsuario);
+                            JOptionPane.showMessageDialog(null, "Se ha eliminado el "+inputUsuario);
+                            
+                        
+                        }catch(NumberFormatException b){
+                            JOptionPane.showMessageDialog(null, "Error"+b.getMessage());
+                                    
+                        }
                         
                         break;
+                    case 9:
+                        break;
+                        
                     default:
                         JOptionPane.showMessageDialog(null, "Opcion incorrecta");
                 }
@@ -107,7 +123,7 @@ public class main{
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error"+e.getMessage());
             }
-        }while(opcion!=8);
+        }while(opcion!=9);
         
     }
 }

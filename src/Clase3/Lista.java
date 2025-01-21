@@ -87,8 +87,9 @@ public class Lista <T>{
                 Nodo aux=this.pFirst;
                 while(aux.pNext!=this.pLast){
                 aux=aux.pNext;
-                }
                 
+                }
+
                 aux.pNext=null;
                 this.pLast=aux;
                 this.size--;
@@ -96,11 +97,43 @@ public class Lista <T>{
         }
         
     }
+    //Funcion eliminar un elemento especifico
+    public void EliminarEspecifico(T elemento){
+        if (pFirst == null) {
+            System.out.println("La lista está vacía, no se puede eliminar el valor.");
+            return;
+        }
+
+        // Si el valor a eliminar está en el primer nodo
+        if (pFirst.dato == elemento) {
+            pFirst = pFirst.pNext; // Mover el puntero `head` al siguiente nodo
+            return;
+        }
+
+        // Recorrer la lista buscando el nodo con el valor a eliminar
+        Nodo current = pFirst;
+        while (current.pNext != null && current.pNext.dato != elemento) {
+            current = current.pNext;
+        }
+
+        // Si se encontró el valor, eliminar el nodo
+        if (current.pNext != null) {
+            current.pNext = current.pNext.pNext; // Saltar el nodo que contiene el valor
+        } else {
+            System.out.println("El valor " + elemento + " no se encontró en la lista.");
+        }
+        this.size--;
+            
+        
+        
+    }
+    
+    
     
     //Funcion buscar un elemento de un nodo
     public boolean Buscar(T elemento) {
         Nodo temp = pFirst; // Comienza desde el primer nodo
-        while (temp != null) {
+        while (temp != null) {  //Para recorrer la lista
             if (temp.dato == elemento) {
                 return true; // Si encuentra el valor, devuelve true
             }
