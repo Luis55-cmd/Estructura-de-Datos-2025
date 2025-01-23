@@ -56,7 +56,7 @@ public class ListaCircular {
 
         }
     }
-
+    //Funcion agregar inicio con un auxiliar
     public void agregarInicio(int dato) {
         if (IsEmpty()) {
             inicio = ultimo = new NodoCircular(dato, inicio);
@@ -69,7 +69,7 @@ public class ListaCircular {
 
         tamaño++;
     }
-
+    //Funcion agregar final sin auxiliar y directamente del constructor
     public void agregarFinal(int dato) {
         if (IsEmpty()) {
             inicio = ultimo = new NodoCircular(dato, inicio);
@@ -80,7 +80,7 @@ public class ListaCircular {
         }
         tamaño++;
     }
-
+    //Funcion agregar final con auxiliar y recorriendo la lista
     /*
 
     public void agregarElementoFinal(int elemento) {
