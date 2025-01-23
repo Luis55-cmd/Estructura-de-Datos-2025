@@ -12,10 +12,16 @@ public class NodoCircular {
 
     public int dato;
     public NodoCircular siguiente;
+    
+    //Al yo colocarle NodoCirucular siguiente automaticamente cuando cree un nuevo
+    //nodo, este nuevo va a apuntar al siguiente
 
     public NodoCircular(int dato, NodoCircular siguiente) {
         this.dato = dato;
         this.siguiente = siguiente;
     }
-
+    public NodoCircular(int dato) {
+        this.dato = dato;
+        
+    }
 }

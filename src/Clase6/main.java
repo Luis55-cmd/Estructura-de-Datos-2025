@@ -20,9 +20,10 @@ public class main {
         do {
             try {
                 opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "1. Agregar un nodo\n"
-                        + "2. Mostrar la lista\n"
-                        + "3. Salir\n", "Menu de opciones",
+                        "1. Agregar un nodo inicio\n"
+                        + "2. Agregar un nodo final\n"
+                        + "3. Mostrar la lista\n"
+                        + "4. Salir\n", "Menu de opciones",
                         JOptionPane.INFORMATION_MESSAGE));
 
                 switch (opcion) {
@@ -31,13 +32,21 @@ public class main {
                         usuarioinput = Integer.parseInt(JOptionPane.showInputDialog(null,
                                 "Ingresa el elemento del nodo",
                                 "Agregando al inicio", JOptionPane.INFORMATION_MESSAGE));
-                        milista.agregarElemento(usuarioinput);
+                        milista.agregarInicio(usuarioinput);
                         break;
 
                     case 2:
+                        usuarioinput = Integer.parseInt(JOptionPane.showInputDialog(null,
+                                "Ingresa el elemento del nodo",
+                                "Agregando al inicio", JOptionPane.INFORMATION_MESSAGE));
+                        milista.agregarFinal(usuarioinput);
+
+                        break;
+
+                    case 3:
                         milista.mostrarLista();
                         break;
-                    case 3:
+                    case 4:
                         JOptionPane.showMessageDialog(null,
                                 "Aplicacion finalizada", "Fin",
                                 JOptionPane.INFORMATION_MESSAGE);
@@ -52,6 +61,6 @@ public class main {
 
             }
 
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
 }

@@ -20,6 +20,7 @@ public class ListaCircular {
     //Constructor de la lista doble
     public ListaCircular() {
         inicio = null;
+        ultimo = null;
         tamaño = 0;
     }
 
@@ -40,9 +41,11 @@ public class ListaCircular {
                 recorrer = recorrer.siguiente;
 
             } while (recorrer != inicio);
-            flecha = flecha + "[" + inicio.dato + "]";
+            flecha = flecha + "[" + ultimo.siguiente.dato + "]";
             JOptionPane.showMessageDialog(null, flecha + "\n"
-                    + "Tamaño de la lista: " + this.tamaño,
+                    + "Tamaño de la lista: " + this.tamaño
+                    + "\n" + "El ultimo elemento que aparece en la lista es solo "
+                    + "para corroborar que es Circular",
                     "Mostrando lista de inicio a fin",
                     JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -54,22 +57,33 @@ public class ListaCircular {
         }
     }
 
-    /*
-    public void agregarElemento(int elemento) {
-        tamaño++;
-        NodoCircular nuevo = new NodoCircular(elemento,inicio);
+    public void agregarInicio(int dato) {
         if (IsEmpty()) {
-            inicio =nuevo;
-            nuevo.siguiente = nuevo;
-
+            inicio = ultimo = new NodoCircular(dato, inicio);
         } else {
-            nuevo.siguiente=inicio.siguiente;
-            inicio.siguiente=nuevo;
-            
+            NodoCircular aux = inicio;
+            inicio = new NodoCircular(dato);
+            inicio.siguiente = aux;
         }
+        ultimo.siguiente = inicio;
+
+        tamaño++;
     }
-     */
-    public void agregarElemento(int elemento) {
+
+    public void agregarFinal(int dato) {
+        if (IsEmpty()) {
+            inicio = ultimo = new NodoCircular(dato, inicio);
+        } else {
+            NodoCircular nuevo = new NodoCircular(dato, inicio);
+            ultimo.siguiente = nuevo;
+            ultimo = nuevo;
+        }
+        tamaño++;
+    }
+
+    /*
+
+    public void agregarElementoFinal(int elemento) {
         tamaño++;
 
         if (IsEmpty()) {
@@ -88,6 +102,7 @@ public class ListaCircular {
             ultimo = aux.siguiente;
 
         }
-    }
 
+    }
+     */
 }
