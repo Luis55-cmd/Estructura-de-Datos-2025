@@ -8,97 +8,93 @@ package Clase3;
  *
  * @author Luis
  */
-public class Lista <T>{
+public class Lista<T> {
+
     //Atributos
-    public Nodo pFirst,pLast; //Punteros inicio y final
+    public Nodo pFirst, pLast; //Punteros inicio y final
     public int size; //Tamaño de la lista
-    
+
     //Constructor lista
-    public Lista(){
-        this.pFirst=null;
-        this.pLast=null;
-        this.size=0;
+    public Lista() {
+        this.pFirst = null;
+        this.pLast = null;
+        this.size = 0;
     }
-    
+
     //Funcion para saber si la lista esta vacia
-    public boolean IsEmpty(){
-        return pFirst==null;
-        
+    public boolean IsEmpty() {
+        return pFirst == null;
+
     }
-    
+
     //Funcion vaciar lista
-    public void Vaciar(){
-        this.pFirst=null;
-        this.size=0;
+    public void Vaciar() {
+        this.pFirst = null;
+        this.size = 0;
     }
-    
+
     //Funcion agregar al final
-    public void AgregarAlFinal(T dato){
-        Nodo nuevo=new Nodo(dato);
-        if(!IsEmpty()){
-            this.pLast.pNext=nuevo;
-            this.pLast=nuevo;
-        }else{
-            this.pFirst=this.pLast=nuevo;
+    public void AgregarAlFinal(T dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (!IsEmpty()) {
             
+            this.pLast.pNext = nuevo; //primero cambio el apuntador
+            this.pLast = nuevo; //luego el pLast/Nodo
+        } else {
+            
+            this.pFirst = this.pLast = nuevo;
+
         }
-        this.size++;
         
+        this.size++;
+
     }
-    
+
     //Funcion agregar un nodo al inicio
-    public void AgregarAlInicio(T dato){
-        Nodo nuevo=new Nodo(dato);
-        if(!IsEmpty()){
-            nuevo.pNext=this.pFirst;
-        this.pFirst=nuevo;
-        }else{
-        this.pFirst=this.pLast=nuevo;
+    public void AgregarAlInicio(T dato) {
+        Nodo nuevo = new Nodo(dato);
+        if (!IsEmpty()) {
+            nuevo.pNext = this.pFirst;
+            this.pFirst = nuevo;
+        } else {
+            this.pFirst = this.pLast = nuevo;
         }
         this.size++;
     }
 
-    
     //Funcion eliminar un nodo al inicio
-    public void EliminarAlInicio(){
-        if (!IsEmpty()){
-            System.out.println("Se ha eliminado el "+pFirst.dato );
-            if (this.pFirst==this.pLast){
-                Vaciar();
-            }else{
-                Nodo aux=this.pFirst.pNext;
-                
-                this.pFirst.pNext=null;
-                
-                this.pFirst=aux;
-                this.size--;
-            }
+    public void EliminarAlInicio() {
+        if (!IsEmpty()) {
+            System.out.println("Se ha eliminado el " + pFirst.dato);
+            pFirst=pFirst.pNext;
+            size--;
         }
-        
+
     }
-    
+
     //Funcion eliminar un nodo al final
-    public void EliminarAlFinal(){
-        if (!IsEmpty()){
-            System.out.println("Se ha eliminado el "+pLast.dato );
-            if (this.pFirst==this.pLast){
+    public void EliminarAlFinal() {
+        if (!IsEmpty()) {
+            System.out.println("Se ha eliminado el " + pLast.dato);
+            if (this.pFirst == this.pLast) {
                 Vaciar();
-            }else{
-                Nodo aux=this.pFirst;
-                while(aux.pNext!=this.pLast){
-                aux=aux.pNext;
-                
+            } else {
+                Nodo aux = this.pFirst;
+                while (aux.pNext != this.pLast) {
+                    aux = aux.pNext;
+
                 }
 
-                aux.pNext=null;
-                this.pLast=aux;
+                aux.pNext = null;
+                this.pLast = aux;
                 this.size--;
             }
         }
-        
+
     }
+
     //Funcion eliminar un elemento especifico
-    public void EliminarEspecifico(T elemento){
+    public void EliminarEspecifico(T elemento) {
         if (pFirst == null) {
             System.out.println("La lista está vacía, no se puede eliminar el valor.");
             return;
@@ -123,13 +119,9 @@ public class Lista <T>{
             System.out.println("El valor " + elemento + " no se encontró en la lista.");
         }
         this.size--;
-            
-        
-        
+
     }
-    
-    
-    
+
     //Funcion buscar un elemento de un nodo
     public boolean Buscar(T elemento) {
         Nodo temp = pFirst; // Comienza desde el primer nodo
@@ -140,56 +132,57 @@ public class Lista <T>{
             temp = temp.pNext; // Si no, avanza al siguiente nodo
         }
         return false; // Si llega al final y no lo encuentra, devuelve false
-        
-        
+
     }
-        
-    
 
     //Funcion mostrar lista
-    public void MostrarLista(){
-        Nodo recorrer= pFirst;
-        System.out.print("Tamaño de la lista: "+this.size);
+    public void MostrarLista() {
+        
+        Nodo recorrer = pFirst;
+        System.out.print("Tamaño de la lista: " + this.size);
         System.out.println();
-        if(!IsEmpty()){
-        while(recorrer!=null){
+        if (!IsEmpty()) {
             
-            System.out.print("["+recorrer.dato+"]---->");
+            /*for(int i=0;i<size;i++){
+                sout(dato);
+                aux=aux.pNext;
+            }
+            
+            */
+            while (recorrer != null) {
 
-            
-            recorrer=recorrer.pNext;
-            
+                System.out.print("[" + recorrer.dato + "]---->");
+
+                recorrer = recorrer.pNext;
+
             }
-        System.out.println("null");
-        
-        
-        }else{
+            System.out.println("null");
+
+        } else {
             System.out.println("[]");
         }
-        
-        
-        }
-    //Funcion intercala el numero 666 entre cada nodo
-    public void Intercalar666(){
-        Nodo recorrer= pFirst;
-        System.out.println();
-        if(!IsEmpty()){
-        while(recorrer!=null){
-            
-            System.out.print("["+recorrer.dato+"]---->");
-            System.out.print("["+666+"]---->");
-            
-            recorrer=recorrer.pNext;
-            
-            }
-        System.out.println("null");
-        
-        
-        }else{
-            System.out.println("[]");
-        }
-        
+
     }
-    
-    
+
+    //Funcion intercala el numero 666 entre cada nodo
+    public void Intercalar666() {
+        Nodo recorrer = pFirst;
+        System.out.println();
+        if (!IsEmpty()) {
+            while (recorrer != null) {
+
+                System.out.print("[" + recorrer.dato + "]---->");
+                System.out.print("[" + 666 + "]---->");
+
+                recorrer = recorrer.pNext;
+
+            }
+            System.out.println("null");
+
+        } else {
+            System.out.println("[]");
+        }
+
+    }
+
 }
