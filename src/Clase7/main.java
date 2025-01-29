@@ -63,7 +63,7 @@ public class main {
         O(n^2+2)⊆ O(n^2)
         
          */
-
+        /*
         Funciones de una Lista Simplemente Enlazada
     
 
@@ -176,6 +176,13 @@ public class main {
             }
     */
     
+    /*
+    O(n)*O(log n)= O(n log n)
+        Si m=n^2
+    O(m+n)=O(n^2+n)=O(n^2)
+        
+        */
+        
 
 }
 }
