@@ -60,6 +60,57 @@ public class Pila {
         }
 
     }
+    
+    public void mostrarrecursiva(Pila p) {
+        int elemento;
+        if (!IsEmpty()) {
+            elemento = cima.dato;
+            p.pop();
+            System.out.println(elemento);
+            p.mostrarrecursiva(p);
+            p.push(elemento);
+        }
+    }
+
+    
+    public void copiarrecursiva(Pila origen, Pila copia) {
+        int elemento;
+        if (!IsEmpty()) {
+            elemento = cima.dato;
+            origen.pop();
+            copiarrecursiva(origen,copia);
+            origen.push(elemento);
+            copia.push(elemento);
+            
+        }
+    }
+
+    public void copiarinvertidarecursiva(Pila origen, Pila copia) {
+        int elemento;
+        if (!IsEmpty()) {
+            elemento = cima.dato;
+            origen.pop();
+            copia.push(elemento);
+            copiarinvertidarecursiva(origen,copia);
+            origen.push(elemento);
+            
+            
+        }
+    }
+
+    public void sumergirrecursiva(Pila p, int x) {
+        int elemento;
+        if (!IsEmpty()) {
+            elemento = cima.dato;
+            p.pop();
+            sumergirrecursiva(p, x);
+            p.push(elemento);
+        } else {
+            p.push(x);
+        }
+    }
+    
+    
 
     //Funcion para voltear una pila
     public void voltear(Pila original) {
