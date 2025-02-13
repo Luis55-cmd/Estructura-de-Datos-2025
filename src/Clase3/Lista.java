@@ -37,15 +37,15 @@ public class Lista<T> {
     public void AgregarAlFinal(T dato) {
         Nodo nuevo = new Nodo(dato);
         if (!IsEmpty()) {
-            
+
             this.pLast.pNext = nuevo; //primero cambio el apuntador
             this.pLast = nuevo; //luego el pLast/Nodo
         } else {
-            
+
             this.pFirst = this.pLast = nuevo;
 
         }
-        
+
         this.size++;
 
     }
@@ -66,7 +66,7 @@ public class Lista<T> {
     public void EliminarAlInicio() {
         if (!IsEmpty()) {
             System.out.println("Se ha eliminado el " + pFirst.dato);
-            pFirst=pFirst.pNext;
+            pFirst = pFirst.pNext;
             size--;
         }
 
@@ -137,18 +137,18 @@ public class Lista<T> {
 
     //Funcion mostrar lista
     public void MostrarLista() {
-        
+
         Nodo recorrer = pFirst;
         System.out.print("Tamaño de la lista: " + this.size);
         System.out.println();
         if (!IsEmpty()) {
-            
+
             /*for(int i=0;i<size;i++){
                 sout(dato);
                 aux=aux.pNext;
             }
             
-            */
+             */
             while (recorrer != null) {
 
                 System.out.print("[" + recorrer.dato + "]---->");
@@ -184,5 +184,7 @@ public class Lista<T> {
         }
 
     }
+
+    
 
 }

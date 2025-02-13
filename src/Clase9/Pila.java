@@ -22,14 +22,20 @@ public class Pila {
         return cima == null;
     }
 
+    public void Vaciar() {
+        while (!IsEmpty()) {
+            pop();
+        }
+    }
+
     //Agregar al inicio
     public void push(int num) {
         Nodo nuevo = new Nodo(num);
-        
+
         Nodo temp = cima;
         cima = nuevo;
         nuevo.pNext = temp;
-        
+
         n++;
     }
 
@@ -48,6 +54,7 @@ public class Pila {
         return 0;
     }
 
+    //Muestra la pila de fin a inicio
     public void mostrarpila() {
         if (!IsEmpty()) {
             Nodo aux = cima;
@@ -60,7 +67,7 @@ public class Pila {
         }
 
     }
-    
+
     public void mostrarrecursiva(Pila p) {
         int elemento;
         if (!IsEmpty()) {
@@ -72,16 +79,15 @@ public class Pila {
         }
     }
 
-    
     public void copiarrecursiva(Pila origen, Pila copia) {
         int elemento;
         if (!IsEmpty()) {
             elemento = cima.dato;
             origen.pop();
-            copiarrecursiva(origen,copia);
+            copiarrecursiva(origen, copia);
             origen.push(elemento);
             copia.push(elemento);
-            
+
         }
     }
 
@@ -91,10 +97,9 @@ public class Pila {
             elemento = cima.dato;
             origen.pop();
             copia.push(elemento);
-            copiarinvertidarecursiva(origen,copia);
+            copiarinvertidarecursiva(origen, copia);
             origen.push(elemento);
-            
-            
+
         }
     }
 
@@ -109,8 +114,6 @@ public class Pila {
             p.push(x);
         }
     }
-    
-    
 
     //Funcion para voltear una pila
     public void voltear(Pila original) {
@@ -171,10 +174,11 @@ public class Pila {
                 aux = aux.pNext;
             }
         } else {
-            cima=nuevo;
+            cima = nuevo;
         }
 
     }
+
     //De forma recursivo
     /*
      public void agregarfinal(int num,Pila p)
@@ -182,7 +186,75 @@ public class Pila {
     agregarfinal(int num,Pila p)
     p.push() //vuelta
     
-    */
-    
+     */
+    //Eliminar al inicio
+    public Nodo pop2() {
+        if (!IsEmpty()) {
+            Nodo temp = cima;
+            cima = temp.pNext;
+
+            n--;
+            return temp;
+
+        } else {
+            System.out.println("Pila vacia");
+        }
+        return null;
+    }
+
+    /*Comprobrar que la pila Q es subpila de P
+    Pila normal: p= a,b,c
+    Pila sombrero: q= a,b
+     */
+    public String sombrero(Pila p, Pila q) {
+        String result = "";
+        if (q.IsEmpty()) {
+            return "Q es sombrero de P";
+        } else if (q.n >= p.n) {
+            return "Q no es sombrero de P";
+        } else {
+            Nodo auxQ = q.pop2();
+            Nodo auxP = p.pop2();
+            if (auxQ.dato == auxP.dato) {
+                result = sombrero(p, q);
+
+            } else {
+                return "Q no es sombrero de P";
+            }
+            q.push(auxQ.dato);
+            p.push(auxP.dato);
+            return result;
+        }
+    }
+
+    //Consigue la suma de todos los elementos de una pila
+    public void suma() {
+        int contador = 0;
+        if (!IsEmpty()) {
+            Nodo aux = cima;
+            while (aux != null) {
+                contador += aux.dato;
+                aux = aux.pNext;
+
+            }
+            System.out.println("Suma de los elementos de la pila: " + contador);
+        } else {
+            System.out.println("Pila vacia");
+        }
+    }
+
+    //Consigue la suma de todos los elementos de una pila recursivamente
+    public int sumaRecursiva(Pila p) {
+        int contador = 0;
+        if (!IsEmpty()) {
+            Nodo aux = p.pop2();
+            contador += aux.dato;
+            contador += sumaRecursiva(p);
+            p.push(aux.dato);
+            return contador;
+        } else {
+            return 0;
+        }
+    }
 
 }

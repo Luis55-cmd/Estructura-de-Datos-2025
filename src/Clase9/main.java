@@ -13,8 +13,8 @@ import Clase9.Pila;
 public class main {
 
     public static void main(String[] args) {
-        
-        
+
+        /*
         Pila mipila=new Pila();
         mipila.push(1);
         mipila.push(2);
@@ -28,10 +28,8 @@ public class main {
         mipila.copiarinvertidarecursiva(mipila, b);
         b.mostrarpila();
         
-        
-        
-
-        /*
+         */
+ /*
         //Pila con apuntadores:
         Pila mipila = new Pila();
         mipila.agregarfinal(3);
@@ -60,7 +58,7 @@ public class main {
         mipila.agregarfinal(-2);
         mipila.mostrarpila();
          */
-        /*
+ /*
         //Pila con arreglo:
         PilaArray mipila = new PilaArray();
 
@@ -68,7 +66,21 @@ public class main {
         mipila.push("2");
         mipila.push("3");
         System.out.println(mipila.print());
-        */
+         */
+        Pila q = new Pila();
+        Pila p = new Pila();
+        p.push(3);
+        p.push(2);
+        p.push(1);
+
+        q.push(2);
+        q.push(1);
+        p.mostrarpila();
+        System.out.println("");
+        q.mostrarpila();
+        System.out.println(p.sombrero(p, q));
+        System.out.println("Suma de los elementos de la pila: " + p.sumaRecursiva(p));
+
     }
 
 }

@@ -69,9 +69,12 @@ public class main {
         }
         //O(n-1)
         //l=i,r=n-1
-        //for(int i=0; l<=n-1; i++)
+        //for(int i=0; i<=n-1; if)
          */
  /*
+ 
+
+ 
 5-        //Bucle que incrementa/decrementa en un factor constante O(log n)
         int n=5;
         for (int i = 1; i <n; i=i*2) {
@@ -104,6 +107,10 @@ public class main {
         //O(n)*O(log n)
          */
  /*
+ 
+ 
+ 
+ 
 7-        //Bucles consecutivos O(m+n)       
          
         int m = 5, n = 6;
@@ -136,6 +143,10 @@ public class main {
         //O(n)*O(n)
          */
  /*
+ 
+
+ 
+ 
 9-        //Bucles combinados O(m*n)
  
  
