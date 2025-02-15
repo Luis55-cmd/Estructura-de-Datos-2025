@@ -157,6 +157,7 @@ public class Cola {
         }
 
     }
+    
 
     //Recursivo
     public void Colear2(Cola cola, int info, int n) {

@@ -70,9 +70,8 @@ public class main {
         Pila q = new Pila();
         Pila p = new Pila();
         p.push(3);
-        p.push(2);
-        p.push(1);
-
+        p.pop();
+        
         q.push(2);
         q.push(1);
         p.mostrarpila();

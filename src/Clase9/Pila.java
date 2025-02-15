@@ -30,23 +30,22 @@ public class Pila {
 
     //Agregar al inicio
     public void push(int num) {
+        
         Nodo nuevo = new Nodo(num);
-
-        Nodo temp = cima;
-        cima = nuevo;
-        nuevo.pNext = temp;
-
+        if (!IsEmpty()) {
+            nuevo.pNext=cima;
+            cima=nuevo;
+        }else{
+            cima=nuevo;
+        }
+        
         n++;
     }
 
     //Eliminar al inicio
     public int pop() {
         if (!IsEmpty()) {
-            Nodo temp = cima;
-            cima = temp.pNext;
-
-            n--;
-            return temp.dato;
+            cima=cima.pNext;
 
         } else {
             System.out.println("Pila vacia");

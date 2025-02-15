@@ -14,13 +14,16 @@ public class main {
 
         Cola micola = new Cola();
         micola.Encolar(1);
+        micola.Encolar(5);
         micola.Encolar(2);
         micola.Encolar(3);
-
-        micola.Colear2(micola, 0, 3);
-        micola.MostrarCola();
-        micola.BuscarElemento(micola, 6);
+        micola.OrdenarRecursivo(micola);
         
+        micola.Colear2(micola, 0, 4);
+        
+        
+        micola.BuscarElemento(micola, 6);
+        micola.MostrarCola();
 
         /*
         Cola micola = new Cola();
