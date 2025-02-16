@@ -11,14 +11,14 @@ package Clase9;
 public class Nodo {
 
     Nodo pNext;
-    int dato;
+    Object dato;
 
-    public Nodo(int dato, Nodo pNext) {
+    public Nodo(Object dato, Nodo pNext) {
         this.dato = dato;
         this.pNext = pNext;
     }
 
-    public Nodo(int dato) {
+    public Nodo(Object dato) {
         this.dato = dato;
         this.pNext = null;
     }

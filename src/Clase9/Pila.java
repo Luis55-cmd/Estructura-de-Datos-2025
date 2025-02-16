@@ -29,59 +29,46 @@ public class Pila {
     }
 
     //Agregar al inicio
-    public void push(int num) {
-        
+    public void push(Object num) {
+
         Nodo nuevo = new Nodo(num);
         if (!IsEmpty()) {
-            nuevo.pNext=cima;
-            cima=nuevo;
-        }else{
-            cima=nuevo;
+            nuevo.pNext = cima;
+            cima = nuevo;
+        } else {
+            cima = nuevo;
         }
-        
+
         n++;
     }
 
     //Eliminar al inicio
-    public int pop() {
+    public Object pop() {
         if (!IsEmpty()) {
-            cima=cima.pNext;
-
+            cima = cima.pNext;
+            n--;
         } else {
             System.out.println("Pila vacia");
         }
-        return 0;
+        return null;
     }
 
     //Muestra la pila de fin a inicio
     public void mostrarpila() {
         if (!IsEmpty()) {
-            Nodo aux = cima;
-            while (aux != null) {
-                System.out.println(aux.dato);
-                aux = aux.pNext;
-            }
-        } else {
-            System.out.println("Pila vacia");
+            int elem = (Integer) cima.dato;
+            pop();
+            System.out.println(elem);
+            mostrarpila();
+            push(elem);
         }
 
-    }
-
-    public void mostrarrecursiva(Pila p) {
-        int elemento;
-        if (!IsEmpty()) {
-            elemento = cima.dato;
-            p.pop();
-            System.out.println(elemento);
-            p.mostrarrecursiva(p);
-            p.push(elemento);
-        }
     }
 
     public void copiarrecursiva(Pila origen, Pila copia) {
         int elemento;
         if (!IsEmpty()) {
-            elemento = cima.dato;
+            elemento = (Integer) cima.dato;
             origen.pop();
             copiarrecursiva(origen, copia);
             origen.push(elemento);
@@ -93,7 +80,7 @@ public class Pila {
     public void copiarinvertidarecursiva(Pila origen, Pila copia) {
         int elemento;
         if (!IsEmpty()) {
-            elemento = cima.dato;
+            elemento = (Integer) cima.dato;
             origen.pop();
             copia.push(elemento);
             copiarinvertidarecursiva(origen, copia);
@@ -105,7 +92,7 @@ public class Pila {
     public void sumergirrecursiva(Pila p, int x) {
         int elemento;
         if (!IsEmpty()) {
-            elemento = cima.dato;
+            elemento = (Integer) cima.dato;
             p.pop();
             sumergirrecursiva(p, x);
             p.push(elemento);
@@ -119,7 +106,7 @@ public class Pila {
         Pila copia = new Pila();
         Nodo aux = original.cima;
         while (aux != null) {
-            copia.push(aux.dato);
+            copia.push((Integer) aux.dato);
             aux = aux.pNext;
         }
         copia.mostrarpila();
@@ -139,7 +126,7 @@ public class Pila {
 
         // Paso 2: Restaurar la pila original y copiarla a la nueva
         while (!auxiliar.IsEmpty()) {
-            int dato = auxiliar.pop();
+            int dato = (Integer) auxiliar.pop();
             push(dato);
             copia.push(dato);
         }
@@ -153,7 +140,7 @@ public class Pila {
 
         // Simplemente vamos apilando los elementos en la nueva pila
         while (actual != null) {
-            invertida.push(actual.dato);
+            invertida.push((Integer) actual.dato);
             actual = actual.pNext;
         }
 
@@ -220,25 +207,9 @@ public class Pila {
             } else {
                 return "Q no es sombrero de P";
             }
-            q.push(auxQ.dato);
-            p.push(auxP.dato);
+            q.push((Integer) auxQ.dato);
+            p.push((Integer) auxP.dato);
             return result;
-        }
-    }
-
-    //Consigue la suma de todos los elementos de una pila
-    public void suma() {
-        int contador = 0;
-        if (!IsEmpty()) {
-            Nodo aux = cima;
-            while (aux != null) {
-                contador += aux.dato;
-                aux = aux.pNext;
-
-            }
-            System.out.println("Suma de los elementos de la pila: " + contador);
-        } else {
-            System.out.println("Pila vacia");
         }
     }
 
@@ -247,13 +218,43 @@ public class Pila {
         int contador = 0;
         if (!IsEmpty()) {
             Nodo aux = p.pop2();
-            contador += aux.dato;
+            contador += (Integer) aux.dato;
             contador += sumaRecursiva(p);
-            p.push(aux.dato);
+            p.push((Integer) aux.dato);
             return contador;
         } else {
             return 0;
         }
+    }
+
+    public boolean verificarParentesis(String p) {
+        Pila abiertos = new Pila();
+        for (int i = 0; i < p.length(); i++) {
+            char c = p.charAt(i);
+            if (c == '(' || c == '[' || c == '{') {
+                abiertos.push(c);
+            } else {
+                char a = (char) abiertos.cima.dato;
+                if (a == '(' && c == ')' || a == '[' && c == ']' || a == '{' && c == '}') {
+                    abiertos.pop();
+                }
+            }
+        }
+        return abiertos.IsEmpty();
+    }
+
+    public void EliminarMedio(Pila stack, int n, int current) {
+        if (stack.IsEmpty() || current == n) {
+            return;
+        }
+        int dato = (Integer) stack.cima.dato;
+        stack.pop();
+        EliminarMedio(stack, n, current+1);
+        if (current != n / 2) {
+            
+            stack.push(dato);
+        }
+
     }
 
 }

@@ -14,6 +14,15 @@ public class main {
 
     public static void main(String[] args) {
 
+        Pila mipila = new Pila();
+        mipila.push(1);
+        mipila.push(2);
+        mipila.push(3);
+
+        mipila.EliminarMedio(mipila,3,0);
+        mipila.mostrarpila();
+        
+
         /*
         Pila mipila=new Pila();
         mipila.push(1);
@@ -67,9 +76,11 @@ public class main {
         mipila.push("3");
         System.out.println(mipila.print());
          */
+ /*
         Pila q = new Pila();
         Pila p = new Pila();
         p.push(3);
+        
         p.pop();
         
         q.push(2);
@@ -79,7 +90,19 @@ public class main {
         q.mostrarpila();
         System.out.println(p.sombrero(p, q));
         System.out.println("Suma de los elementos de la pila: " + p.sumaRecursiva(p));
+         */
 
+ /*Comprobrar que cada vez que se abra un parentesis, corchete o llave se cierre*/
+ /*
+        String p1 = "((())}";
+        String p2 = "([{}])";
+        String p3 = "([{}})";
+        Pila p = new Pila();
+        System.out.println(p.verificarParentesis(p1));//false
+        System.out.println(p.verificarParentesis(p2));//true
+        System.out.println(p.verificarParentesis(p3));//false
+       
+         */
     }
 
 }

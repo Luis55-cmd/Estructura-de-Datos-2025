@@ -23,6 +23,7 @@ public class main {
         
         
         micola.BuscarElemento(micola, 6);
+        
         micola.MostrarCola();
 
         /*

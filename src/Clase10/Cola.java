@@ -69,11 +69,12 @@ public class Cola {
 
     //Muestra la cola de inicio a fin
     public void MostrarCola() {
-        if (!IsEmpty()) {
-            Nodo aux = front;
-            while (aux != null) {
-                System.out.println(aux.dato);
-                aux = aux.pNext;
+        if (!IsEmpty()) { 
+            for (int i = 0; i < size; i++) {
+                Nodo actual=front;
+                Desencolar();
+                System.out.println(actual.dato);
+                Encolar(actual.dato);
             }
         } else {
             System.out.println("Pila vacia");
@@ -157,7 +158,6 @@ public class Cola {
         }
 
     }
-    
 
     //Recursivo
     public void Colear2(Cola cola, int info, int n) {
@@ -194,53 +194,9 @@ public class Cola {
 
     }
 
-    //Ordenar una cola crecientemente, menor a mayor
-    public void OrdenarCreciente() {
-        //Cola vacia o Cola con un solo elemento
-        if (front == null || front.pNext == null) {
-            return; // No hay nada que ordenar
-        }
-        boolean intercambio;
-        do {
-            intercambio = false;
-            Nodo aux = front;
-            while (aux.pNext != null) { //Recorro la Cola
-                if ((Integer) aux.dato > (Integer) aux.pNext.dato) {
-                    // Intercambiar los valores de los nodos
-                    Object temp = aux.dato;     //Guardo el valor del nodo
-                    aux.dato = aux.pNext.dato;  //Intercambio el valor del nodo por el siguiente nodo
-                    aux.pNext.dato = temp;      //Intercambio el valor del siguiente nodo por el valor del que guarde
-                    intercambio = true;         //Y coloco que el intercambio se realizo
-                }
-                aux = aux.pNext;                //Paso al siguiente nodo
-            }
-        } while (intercambio);
-    }
+    
 
-    //Eliminar elementos duplicados
-    public void EliminarDuplicados() {
-        //Cola vacia o Cola con un solo elemento
-        if (front == null || front.pNext == null) {
-            return;
-        }
-        Nodo actual = front; // Creo un nodo en el inicio de la cola
-        while (actual != null) { //Recorro la Cola
-            Nodo previo = actual;           //Creo dos nodos
-            Nodo siguiente = actual.pNext;
-            // Comparar el nodo actual con los siguientes
-            while (siguiente != null) {
-                if (actual.dato == siguiente.dato) {    //Si son iguales los elementos
-                    // Eliminar el nodo repetido
-                    previo.pNext = siguiente.pNext;
-                } else {                                //Si no son iguales los elementos
-                    previo = siguiente; // Avanzar al siguiente nodo
-                }
-                siguiente = siguiente.pNext;
-            }
-            actual = actual.pNext; // Avanzar al siguiente nodo principal
-        }
-
-    }
+    
 
     //Funcion buscar un elemento sin conocer el tamaño
     public void BuscarElemento(Cola cola, int dato) {
@@ -276,4 +232,5 @@ public class Cola {
     }
 
     
+
 }
