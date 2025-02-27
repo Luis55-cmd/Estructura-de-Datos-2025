@@ -50,6 +50,16 @@ public class PilaArray2 {
     public int tamaño() {
         return array.length;
     }
+    public void print(){
+        
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+          
+            
+            
+        
+    }
     
     
 

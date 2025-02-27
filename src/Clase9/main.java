@@ -13,15 +13,31 @@ import Clase9.Pila;
 public class main {
 
     public static void main(String[] args) {
+        
+        PilaArray2 array=new PilaArray2(3);
+        array.push(1);
+        array.push(2);
+        array.push(3);
+        System.out.println(array.pop());
+        array.print();
+        
+        
+        /*
 
         Pila mipila = new Pila();
         mipila.push(1);
         mipila.push(2);
         mipila.push(3);
+        mipila.push(4);
+        mipila.push(5);
 
-        mipila.EliminarMedio(mipila,3,0);
+        mipila.EliminarMedio(mipila, 5, 0);
         mipila.mostrarpila();
-        
+        System.out.println("");
+        mipila.AgregarMedio(mipila, 4, 0, 3);
+        mipila.mostrarpila();
+        */
+
 
         /*
         Pila mipila=new Pila();

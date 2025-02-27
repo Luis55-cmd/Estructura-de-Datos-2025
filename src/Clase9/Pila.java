@@ -249,10 +249,32 @@ public class Pila {
         }
         int dato = (Integer) stack.cima.dato;
         stack.pop();
-        EliminarMedio(stack, n, current+1);
+        EliminarMedio(stack, n, current + 1);
         if (current != n / 2) {
-            
+
             stack.push(dato);
+        }
+
+    }
+
+    public void AgregarMedio(Pila stack, int n, int current, int elem) {
+        //n tamaño de la pila, current contador, elem numero que voy a agregar
+        if (stack.IsEmpty() || current == n) {
+            return;
+        }
+        int dato = (Integer) stack.cima.dato;
+        stack.pop();
+        AgregarMedio(stack, n, current + 1, elem);
+        if (current != n / 2) {
+            //1 != 2 agrega el 1
+            //2 != 2 agrega el 2
+            //3 != 2 agrega el 3
+
+            stack.push(dato);
+        } else {
+            stack.push(dato);
+            stack.push(elem);
+
         }
 
     }

@@ -29,6 +29,23 @@ public class ListaCircular {
         return inicio == null; //si inicio es igual a null retorna verdadero
     }
 
+    public void NumNodos(NodoCircular x, NodoCircular t) {
+
+        if (!IsEmpty()) {
+            //12345
+            int contador = 1;
+            NodoCircular aux = x;
+            NodoCircular aux2 = t;
+            while (aux != aux2) {
+                contador++;
+                aux = aux.siguiente;
+            }
+
+            System.out.println("Numeros de nodos entre x y t: " + (contador - 2));
+        }
+
+    }
+
     //Funcion mostrar la lista de inicio a fin
     public void mostrarLista() {
         if (!IsEmpty()) {
@@ -56,6 +73,7 @@ public class ListaCircular {
 
         }
     }
+
     //Funcion agregar inicio con un auxiliar
     public void agregarInicio(int dato) {
         if (IsEmpty()) {
@@ -69,6 +87,7 @@ public class ListaCircular {
 
         tamaño++;
     }
+
     //Funcion agregar final sin auxiliar y directamente del constructor
     public void agregarFinal(int dato) {
         if (IsEmpty()) {

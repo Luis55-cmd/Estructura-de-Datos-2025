@@ -184,7 +184,27 @@ public class Lista<T> {
         }
 
     }
-    
+
+    // Método para agregar un número en orden
+    public void agregarEnOrden(int numero) {
+        Nodo nuevoNodo = new Nodo(numero);
+
+        // Caso 1: La lista está vacía o el nuevo número es menor que el primer elemento
+        if (pFirst == null || numero < (Integer) pFirst.dato) {
+            nuevoNodo.pNext = pFirst;
+            pFirst = nuevoNodo;
+        } else {
+            // Caso 2: Buscar el lugar correcto para insertar el nuevo nodo
+            Nodo actual = pFirst;
+            while (actual.pNext != null && (Integer) actual.pNext.dato < numero) {
+                actual = actual.pNext;
+            }
+            // Insertar el nuevo nodo en su posición
+            nuevoNodo.pNext = actual.pNext;
+            actual.pNext = nuevoNodo;
+        }
+    }
+
     /*
     
     
@@ -544,12 +564,5 @@ public class PalindromeLinkedList {
     }
 }
     
-    */
-
-    
-
-    
-
-    
-
+     */
 }

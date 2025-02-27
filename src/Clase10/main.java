@@ -23,8 +23,10 @@ public class main {
         
         
         micola.BuscarElemento(micola, 6);
-        
+        micola.Encolar(50);
         micola.MostrarCola();
+        System.out.println("");
+        micola.Promedio(micola);
 
         /*
         Cola micola = new Cola();

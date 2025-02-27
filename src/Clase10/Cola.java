@@ -69,9 +69,9 @@ public class Cola {
 
     //Muestra la cola de inicio a fin
     public void MostrarCola() {
-        if (!IsEmpty()) { 
+        if (!IsEmpty()) {
             for (int i = 0; i < size; i++) {
-                Nodo actual=front;
+                Nodo actual = front;
                 Desencolar();
                 System.out.println(actual.dato);
                 Encolar(actual.dato);
@@ -194,10 +194,6 @@ public class Cola {
 
     }
 
-    
-
-    
-
     //Funcion buscar un elemento sin conocer el tamaño
     public void BuscarElemento(Cola cola, int dato) {
         cola.InvertirCola(cola);
@@ -231,6 +227,25 @@ public class Cola {
         return result;
     }
 
-    
+    public void Promedio(Cola cola) {
+        if (!IsEmpty()) {
+            int suma = 0;
+            for (int i = 0; i < size; i++) {
+                Nodo actual = front;
+
+                
+                Nodo sum = Desencolar2();
+                suma += (Integer) sum.dato;
+                //Suma todos los números del conjunto.
+                //Divide el resultado entre el número de valores del conjunto
+                Encolar(actual.dato);
+            }
+            suma = suma / cola.size;
+            System.out.println("El promedio de los elementos: " + suma);
+        } else {
+            System.out.println("Pila vacia");
+        }
+
+    }
 
 }

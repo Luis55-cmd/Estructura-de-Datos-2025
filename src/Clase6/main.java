@@ -29,6 +29,7 @@ public class main {
                 switch (opcion) {
 
                     case 1:
+
                         usuarioinput = Integer.parseInt(JOptionPane.showInputDialog(null,
                                 "Ingresa el elemento del nodo",
                                 "Agregando al inicio", JOptionPane.INFORMATION_MESSAGE));
@@ -36,15 +37,24 @@ public class main {
                         break;
 
                     case 2:
+                        /*
                         usuarioinput = Integer.parseInt(JOptionPane.showInputDialog(null,
                                 "Ingresa el elemento del nodo",
                                 "Agregando al inicio", JOptionPane.INFORMATION_MESSAGE));
                         milista.agregarFinal(usuarioinput);
+                         */
+                        milista.agregarFinal(1);
+                        milista.agregarFinal(2);
+                        milista.agregarFinal(3);
+                        milista.agregarFinal(4);
 
                         break;
 
                     case 3:
                         milista.mostrarLista();
+                        
+                        milista.NumNodos(milista.inicio, milista.ultimo);
+                        
                         break;
                     case 4:
                         JOptionPane.showMessageDialog(null,
